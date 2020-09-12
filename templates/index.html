@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block body %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div class="container">
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                aria-hidden="true">×</span></button>
+        {{message}}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endwith %}
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Create Transaction</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/add_doc" method="POST">
+                <div class="modal-body">
+                    <input class="form-control my-1" name="buyer" type="text" placeholder="Buyer" required>
+                    <input class="form-control my-1" name="seller" type="text" placeholder="Seller" required>
+                    <input class="form-control my-1" name="location" type="text" placeholder="Location" required>
+                    <input class="form-control my-1" name="price" type="text" placeholder="Price" required>
+                    <input class="form-control my-1" name="plot" type="text" placeholder="Plot" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Proccess</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="jumbotron jumbotron-fluid mt-1">
+        <div class="container">
+            <h1 class="display-4">GOV LAND RECORDS</h1>
+            <p class="lead">The most trusted and secured govmnet record system</p>
+        </div>
+    </div>
+    <div class="d-flex mt-3 w-100">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">Add
+            Transaction</button>
+        <div class="flex-1 ">
+        </div>
+    </div>
+    <div class="list-group mt-3">
+        {% for i in data %}
+        <a href="http://localhost:5000/doc/{{i.hash}}" class="list-group-item list-group-item-action">{{i.hash}}</a>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

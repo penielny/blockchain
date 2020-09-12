@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+
+<div class="container">
+    <div class="d-flex mt-3">
+        <a href="/" type="button" class="btn btn-primary">Back</a>
+    </div>
+    <div class="card my-3">
+        <div class="card-body">
+            <h5 class="card-title font-bold">{{data.hash}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{data.prevhash}}</h6>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Buyer : {{data.Buyer}}</li>
+                <li class="list-group-item">Seller: {{data.Seller}}</li>
+                <li class="list-group-item">Location : {{data.Location}}</li>
+                <li class="list-group-item">Price : GHS {{data.price}}</li>
+                <li class="list-group-item">Plot : {{data.Plot}} acers</li>
+                <li class="list-group-item">Date : {{data.date}}</li> 
+                <li class="list-group-item">Reciept_id : {{data.id}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="text-center mt-5">
+        <h5 class="text-muted">Powered by blockchain</h5 class="text-muted">
+    </div>
+</div>
+{% endblock%}
